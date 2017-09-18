@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p></p>
+<p></p>
+<p></p>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<t></t>
+<t></t>
+<t></t>
+<div></div>
+<div></div>
+<script>
+//    var ops = document.querySelectorAll('p');
+//    for (var i=0;i<ops.length;i++){
+//            ops[i].innerText = 'Text';
+//    }
+
+    function $(selector){
+        return new $.fn.init(selector);
+    }
+
+    $.fn = {
+        init:function(selector){
+            var elems = document.querySelectorAll(selector);
+            this.length = elems.length;
+            for (var i =0;i<elems.length;i++){
+                this[i] = elems[i];
+            }
+        },
+        html: function(html) {
+            //如何在这里访问到之前存储在$.fn.init实例化出的对象身上的所有元素
+            console.log(this);
+            //遍历当前对象，去设置内容即可
+            for (var i = 0; i < this.length; i++) {
+                this[i].innerHTML = html;
+            }
+            return this;
+        },
+        css: function(k, v) {
+            //如果传递两个参数，第一个参数是字符串，第二个也是字符串
+            //如果只传递一个参数，并且这个参数是对象
+            if (typeof k === 'string' && typeof v === 'string') {
+                for (var i = 0; i < this.length; i++) {
+                    this[i].style[k] = v;
+                }
+                return this;
+            } else if(typeof k === 'object') {
+                //遍历所有的元素，把对象当中所有的css样式都给设置上
+                for (var i = 0; i < this.length; i++) {
+                    //如何设置多个样式, 多个样式是不是放在k这个对象里面
+                    for (var prop in k) {
+                        this[i].style[prop] = k[prop];
+                    }
+                }
+                return this;
+                //设置元素的操作都是批量的；可以继续返回实例对象供下次操作
+                //获取元素的操作是批量的吗？ 不是批量返回，而是返回匹配的第一个元素的内容
+                //只传了一个参数，并且这个参数是字符串, 那就是获取这个css样式
+            } else if(typeof k === 'string' && arguments.length === 1) {
+                if (window.getComputedStyle) {
+                    k = k.replace(/[A-Z]/g, function(match){
+                        return '-' + match.toLowerCase();
+                    });
+                    return window.getComputedStyle(this[0])[k]; //中括号里面可以是变量
+                } else {
+                    k = k.replace(/-([a-z])/g, function(match, $1){
+                        return $1.toUpperCase();
+                    });
+                    return this[0].currentStyle[k];
+                }
+            }
+        }
+
+
+    };
+
+    $.fn.init.prototype = $.fn;
+    $('span').html('ttttttttttttttttttt');
+    $('p').html('ttttttttttttttttttt').css('color','red');
+    $('p').html('ttttttttttttttttttt').css('font-size','30px');
+    $('div').html('ttttttttttttttttttt').css('font-size','30px');
+    $('t').html('ttttttttttttttttttt').css('font-size','30px');
+
+</script>
+</body>
+</html>

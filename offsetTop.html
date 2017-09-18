@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a{
+            position: relative;
+            padding-top: 300px;
+        }
+        .b{
+            position: relative;
+            padding-top: 100px;
+            border: 10px solid black;
+        }
+        p{
+            margin-top: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="a">
+    <div class="b">
+        <p>1</p>
+    </div>
+</div>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    console.log($('p').offset().top);//获得当前p元素到网页顶部的偏移值
+</script>
+</body>
+</html>

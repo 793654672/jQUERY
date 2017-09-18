@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="jquery-3.2.1.js"></script>
+<script src="jquery.mousewheel.js"></script>
+<script>
+    $('div').mousewheel(function(event){
+        if (event.preventDefault){
+            event.preventDefault();//方法阻止元素发生默认的行为。
+        }else {
+            event.returnValue = false;//取消事件的默认行为
+        }
+        $('div').html(event.deltaY);
+    });
+</script>
+
+</body>
+</html>

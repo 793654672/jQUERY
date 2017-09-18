@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p></p>
+<p></p>
+<p></p>
+<div class="a" id="a"></div>
+</body>
+<script>
+    $('p').html('ttttt').css('color','red');
+    $('#a').animate({'left':500,'width':300},4000,function(){
+        console.log('finish')
+    });
+    $('p').mouseenter(function(){
+
+        $(this).css('background-color','red').siblings().css('background-color','green');
+    });
+</script>
+</html>

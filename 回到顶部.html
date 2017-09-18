@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            height: 5000px;
+        }
+
+        button {
+            position: fixed;
+            bottom: 100px;
+            right: 10px;
+            display: none;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<div class="a"><button>TOP</button></div>
+
+<script src="jquery-3.2.1.js"></script>
+<script>
+    $('button').click(function(){
+//        $(window).scrollTop(0);// 点击的时候卷动值归0;
+        $('html,body').animate({
+            'scrollTop':0
+        },1000);
+    });
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop()>500){
+            $('button').show();
+        }else {
+            $('button').hide();
+        }
+    });
+
+    //scrollTop(),scrollTop(0);//获取scrollTop的值,设置scrollTop的值
+    //fadeOut() 淡出动画
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #a{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        #toggle {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<div class="aaa" id="a"></div>
+<div id="toggle"></div>
+</body>
+<script src="jquery-3.2.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+    $('#a').draggable();
+</script>
+
+<script>
+    $( document ).click(function() {
+        $( "#toggle" ).toggle( "bounce", { times: 3 }, "slow" );
+    });
+</script>
+
+</html>

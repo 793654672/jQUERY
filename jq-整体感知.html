@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p></p>
+<p></p>
+<p></p>
+<div class="a" id="a" style="height: 100px ;width: 100px ;background:red;position: relative"></div>
+
+<script src="jquery-3.2.1.js"></script>
+<script>
+    $('p').html('jquery').css('color','red');
+
+    $('#a').animate({'left':500,'width':300},4000,function(){
+        console.log('finish')
+    });
+
+    $('p').mouseenter(function(){
+        $(this).css('background-color','red').siblings().css('background-color','green');
+    });
+
+    $("p")[1].style.backgroundColor = 'orange';
+
+</script>
+</body>
+</html>
